@@ -1,3 +1,0 @@
-C:/Users/Egor/uni_projects/num_methods/hw1/cmake-build-debug/CMakeFiles/hw1.dir
-C:/Users/Egor/uni_projects/num_methods/hw1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Egor/uni_projects/num_methods/hw1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
