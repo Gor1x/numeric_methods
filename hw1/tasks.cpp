@@ -30,14 +30,20 @@ float kahan_sum(const float* x, int n) {
 #pragma GCC push_options
 //#pragma GCC optimize ("O3")
 
+#define print(x, y) std::cout << (x) <<" " << y << std::endl;
+
 float pairwise_sum_simd(float* x, int n) {
-    std::sort(x, x + n);
-    std::reverse(x, x + n);
     int len = n;
 
     while (len > 1) {
-#pragma omp simd
-        for (int i = 0; i * 2 + 1 < len; i++) {
+        int i = 0;
+        for (; i * 2 + 7 < len; i += 4) {
+            x[i + 0] = x[i * 2 + 0] + x[i * 2 + 4];
+            x[i + 1] = x[i * 2 + 1] + x[i * 2 + 5];
+            x[i + 2] = x[i * 2 + 2] + x[i * 2 + 6];
+            x[i + 3] = x[i * 2 + 3] + x[i * 2 + 7];
+        }
+        for (; i * 2 + 1 < len; i++) {
             x[i] = x[i * 2] + x[i * 2 + 1];
         }
         if (len % 2 == 1) {
